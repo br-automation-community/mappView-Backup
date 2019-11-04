@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Configuration>
+  <Element ID="gBackupCore" Type="mpbackupcore">
+    <Group ID="Backup">
+      <Selector ID="AutomaticUpdate" Value="Notify">
+        <Property ID="DeviceName" Value="USBdevice" />
+      </Selector>
+    </Group>
+  </Element>
+</Configuration>

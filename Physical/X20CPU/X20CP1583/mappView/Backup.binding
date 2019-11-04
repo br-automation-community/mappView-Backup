@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BindingsSet xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Backup_binding">
+	<Bindings>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:USB.PAR.is_connected" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="btnUSBconnected" attribute="value" />
+		</Binding>
+	
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::mappBackup:SelectedDevice" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="ddbDeviceA" attribute="selectedValue" />
+</Binding>
+</Bindings>
+</BindingsSet>

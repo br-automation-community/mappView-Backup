@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Content id="contentBackup" height="800" width="1200" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Widgets>
+    <Widget xsi:type="widgets.brease.GroupBox" id="grpBackup" top="10" left="10" width="1180" height="250" zIndex="9" text="Backup &amp; Restore">
+      <Widgets>
+        <Widget xsi:type="widgets.brease.Label" id="labBackupName" top="63" left="14" width="106" zIndex="0" text="Backup Name" textAlign="right" />
+        <Widget xsi:type="widgets.brease.TextInput" id="TextInput1" top="63" left="124" width="411" zIndex="1" />
+        <Widget xsi:type="widgets.brease.Button" id="btnBackup" top="138" left="14" width="151" height="52" zIndex="2" text="Backup" cornerRadius="10px" />
+        <Widget xsi:type="widgets.brease.Button" id="btnRestore" top="138" left="189" width="151" height="52" zIndex="3" text="Restore" cornerRadius="10px" />
+        <Widget xsi:type="widgets.brease.ToggleButton" id="btnUSBconnected" top="13" left="959" width="200" height="35" zIndex="4" mouseDownText="USB connected" text="USB disconnected" backGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" disabledBackGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" checkedBackGroundGradient="linear-gradient(to bottom, #4A4A4A 0%,#29920c 100%)" disabledCheckedBackGroundGradient="linear-gradient(to bottom, #4A4A4A 0%,#29920c 100%)" enable="false" />
+        <Widget xsi:type="widgets.brease.DropDownBox" id="ddbDeviceA" top="8" left="129" width="200" zIndex="5" dataProvider="[{'value':'USER_DEVICE','text':'User Partition'},{'value':'SIM_DEVICE','text':'Simulation'},{'value':'USBdevice','text':'USB Stick'}]" selectedValue="USER_DEVICE" />
+        <Widget xsi:type="widgets.brease.Label" id="labDeviceA" top="8" left="14" width="106" zIndex="6" text="Device" textAlign="right" />
+      </Widgets>
+    </Widget>
+  </Widgets>
+</Content>
