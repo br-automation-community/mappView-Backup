@@ -6,9 +6,70 @@
 			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="btnUSBconnected" attribute="value" />
 		</Binding>
 	
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::mappBackup:SelectedDevice" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="ddbDeviceA" attribute="selectedValue" />
+		</Binding>
+		
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::mappBackup:MpBackupCore_0.CommandBusy" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="btnBackupBusy" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::mappBackup:MpBackupCore_0.Error" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="btnBackupError" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::mappBackup:MpBackupCore_0.Info.LastBackup.Name" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupLastName" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::mappBackup:MpBackupCore_0.Info.LastBackup.DateTime" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="dateBackupLast" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::mappBackup:MpBackupCore_0.Info.Automatic.Update.ConfigurationVersion" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupUpdateVersion" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::mappBackup:MpBackupCore_0.Info.Automatic.Update.ConfigurationID" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupUpdateID" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::mappBackup:MpBackupCore_0.Info.Automatic.Update.Name" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupUpdateName" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::mappBackup:MpBackupCore_0.Info.Project.Requested.ConfigurationVersion" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupRequestedVersion" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::mappBackup:MpBackupCore_0.Info.Project.Requested.ConfigurationID" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupRequestedID" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::mappBackup:MpBackupCore_0.Info.Project.Requested.Name" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupRequestedName" attribute="value" />
+		</Binding>
+	<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::mappBackup:MpBackupCore_0.Info.LastBackup.GenerationType" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="ddbBackupLastType" attribute="selectedIndex" />
+</Binding>
 <Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::mappBackup:SelectedDevice" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="ddbDeviceA" attribute="selectedValue" />
+<Source xsi:type="opcUa" refId="::mappBackup:MpBackupCore_0.Info.Project.Current.ConfigurationVersion" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupCurrentVersion" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::mappBackup:MpBackupCore_0.Info.Project.Current.ConfigurationID" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupCurrentName" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::mappBackup:BackupName" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="TextInput1" attribute="value" />
+</Binding>
+<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::mappBackup:MpBackupCore_0.StatusID" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="numBackupErrorNo" attribute="value" />
 </Binding>
 </Bindings>
 </BindingsSet>

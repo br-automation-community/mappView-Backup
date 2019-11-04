@@ -6,6 +6,5 @@
     <Object Type="File">BackupVariables.var</Object>
     <Object Type="Program" Language="IEC" Description="Sample for all AsUSB-Library-Functions">mappBackup</Object>
     <Object Type="File">changelog.txt</Object>
-    <Object Type="Library" Language="IEC">IecCheck</Object>
   </Objects>
 </Package>

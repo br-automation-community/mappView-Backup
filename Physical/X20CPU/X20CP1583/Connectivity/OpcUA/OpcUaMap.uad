@@ -21,6 +21,7 @@
       <Task Name="mappBackup">
         <Variable Name="MpBackupCore_0" AutomaticEnable="True" />
         <Variable Name="SelectedDevice" />
+        <Variable Name="BackupName" />
       </Task>
     </Module>
   </DefaultView>

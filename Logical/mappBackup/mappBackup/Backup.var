@@ -7,4 +7,5 @@ END_VAR
 (*Local variables*)
 VAR
 	SelectedDevice : STRING[80];
+	BackupName : STRING[80] := 'MyBackup';
 END_VAR
