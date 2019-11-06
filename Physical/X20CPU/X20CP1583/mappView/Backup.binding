@@ -5,28 +5,10 @@
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:USB.PAR.is_connected" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="btnUSBconnected" attribute="value" />
 		</Binding>
-	
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::mappBackup:SelectedDevice" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="ddbDeviceA" attribute="selectedValue" />
-		</Binding>
-		
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::mappBackup:MpBackupCore_0.CommandBusy" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="btnBackupBusy" attribute="value" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::mappBackup:MpBackupCore_0.Error" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="btnBackupError" attribute="value" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::mappBackup:MpBackupCore_0.Info.LastBackup.Name" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupLastName" attribute="value" />
-		</Binding>
-		<Binding mode="twoWay">
-			<Source xsi:type="opcUa" refId="::mappBackup:MpBackupCore_0.Info.LastBackup.DateTime" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="dateBackupLast" attribute="value" />
-		</Binding>
+		</Binding>	
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::mappBackup:MpBackupCore_0.Info.Automatic.Update.ConfigurationVersion" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupUpdateVersion" attribute="value" />
@@ -51,25 +33,59 @@
 			<Source xsi:type="opcUa" refId="::mappBackup:MpBackupCore_0.Info.Project.Requested.Name" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupRequestedName" attribute="value" />
 		</Binding>
+	
+
+
+
+
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.PAR.BackupName" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="TextInput1" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.ERR.No" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="numBackupErrorNo" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.ERR.State" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="numBackupErrorState" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.DAT.Status" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupStatus" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.DAT.CurrentID" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupCurrentName" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.DAT.CurrentVersion" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupCurrentVersion" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.DAT.LastName" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupLastName" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.DAT.LastDate" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="dateBackupLast" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.DAT.LastType" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="ddbBackupLastType" attribute="selectedIndex" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.PAR.DeviceName" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="dddBackupDeviceList" attribute="selectedValue" />
+		</Binding>
+		
 	<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::mappBackup:MpBackupCore_0.Info.LastBackup.GenerationType" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="ddbBackupLastType" attribute="selectedIndex" />
+<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.VIS.DeviceList" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="dddBackupDeviceList" attribute="dataProvider" />
 </Binding>
 <Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::mappBackup:MpBackupCore_0.Info.Project.Current.ConfigurationVersion" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupCurrentVersion" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::mappBackup:MpBackupCore_0.Info.Project.Current.ConfigurationID" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupCurrentName" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::mappBackup:BackupName" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="TextInput1" attribute="value" />
-</Binding>
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::mappBackup:MpBackupCore_0.StatusID" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="numBackupErrorNo" attribute="value" />
+<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.ERR.Text" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupErrorText" attribute="value" />
 </Binding>
 </Bindings>
 </BindingsSet>

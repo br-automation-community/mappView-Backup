@@ -5,3 +5,20 @@ FUNCTION String2DataProvider : BOOL
 		TargetString : UDINT;
 	END_VAR
 END_FUNCTION
+
+FUNCTION WorkingStatus : USINT
+	VAR_INPUT
+		BACKUP : REFERENCE TO bacMAIN;
+		str : UDINT;
+		animation : USINT;
+	END_VAR
+END_FUNCTION
+
+FUNCTION CreateError : bacSTATE
+	VAR_INPUT
+		BACKUP : REFERENCE TO bacMAIN;
+		No : DINT;
+		Text : WSTRING[200];
+		State : bacSTATE;
+	END_VAR
+END_FUNCTION

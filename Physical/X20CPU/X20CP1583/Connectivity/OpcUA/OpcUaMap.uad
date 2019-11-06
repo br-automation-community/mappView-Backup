@@ -17,11 +17,10 @@
     <Module Name="&lt;Default&gt;">
       <GlobalVariables Name="Global Variables">
         <Variable Name="USB" AutomaticEnable="True" />
+        <Variable Name="Backup_01" AutomaticEnable="True" />
       </GlobalVariables>
       <Task Name="mappBackup">
         <Variable Name="MpBackupCore_0" AutomaticEnable="True" />
-        <Variable Name="SelectedDevice" />
-        <Variable Name="BackupName" />
       </Task>
     </Module>
   </DefaultView>

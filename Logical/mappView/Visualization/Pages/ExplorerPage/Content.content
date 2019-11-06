@@ -1,54 +1,58 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Content id="contentBackup" height="800" width="1200" xmlns="http://www.br-automation.com/iat2015/contentDefinition/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <Widgets>
-    <Widget xsi:type="widgets.brease.GroupBox" id="grpBackup" top="10" left="10" width="750" height="215" zIndex="9" text="Backup &amp; Restore">
+    <Widget xsi:type="widgets.brease.GroupBox" id="grpBackup" top="190" left="10" width="1180" height="215" zIndex="9" text="Backup &amp; Restore">
       <Widgets>
-        <Widget xsi:type="widgets.brease.Label" id="labBackupName" top="63" left="14" width="106" zIndex="0" text="Backup Name" textAlign="right" />
-        <Widget xsi:type="widgets.brease.TextInput" id="TextInput1" top="63" left="124" width="421" zIndex="1" />
+        <Widget xsi:type="widgets.brease.Label" id="labBackupName" top="58" left="14" width="106" zIndex="0" text="Backup Name" textAlign="right" />
+        <Widget xsi:type="widgets.brease.TextInput" id="TextInput1" top="58" left="124" width="421" zIndex="1" />
         <Widget xsi:type="widgets.brease.Button" id="btnBackupStart" top="103" left="124" width="151" height="52" zIndex="2" text="Backup" cornerRadius="10px" />
         <Widget xsi:type="widgets.brease.Button" id="btnBackupRestore" top="103" left="299" width="151" height="52" zIndex="3" text="Restore" cornerRadius="10px" />
-        <Widget xsi:type="widgets.brease.DropDownBox" id="ddbDeviceA" top="8" left="129" width="200" zIndex="4" dataProvider="[{'value':'USER_DEVICE','text':'User Partition'},{'value':'SIM_DEVICE','text':'Simulation'},{'value':'USBdevice','text':'USB Stick'}]" selectedValue="USER_DEVICE" />
-        <Widget xsi:type="widgets.brease.Label" id="labDeviceA" top="8" left="14" width="106" zIndex="5" text="Device" textAlign="right" />
-        <Widget xsi:type="widgets.brease.Button" id="btnBackupGenerate" top="53" left="579" width="151" height="52" zIndex="6" text="Generate" cornerRadius="10px" />
+        <Widget xsi:type="widgets.brease.DropDownBox" id="dddBackupDeviceList" top="13" left="129" width="200" zIndex="4" dataProvider="[]" />
+        <Widget xsi:type="widgets.brease.Label" id="labDeviceA" top="13" left="14" width="106" zIndex="5" text="Device" textAlign="right" />
+        <Widget xsi:type="widgets.brease.Button" id="btnBackupGenerate" top="48" left="579" width="151" height="52" zIndex="6" text="Generate" cornerRadius="10px" />
+        <Widget xsi:type="widgets.brease.Label" id="labBackupName1" top="13" left="859" width="310" zIndex="7" text="Last Backup" textAlign="center" bold="true" padding="5px" />
+        <Widget xsi:type="widgets.brease.Label" id="labBackupLasttName" top="43" left="769" width="76" height="22" zIndex="8" text="Name" textAlign="right" />
+        <Widget xsi:type="widgets.brease.TextOutput" id="txtBackupLastName" top="38" left="859" width="310" zIndex="9" borderWidth="1px" borderStyle="solid" textAlign="center" padding="5px" />
+        <Widget xsi:type="widgets.brease.Label" id="labBackupLastDate" top="78" left="769" width="76" height="22" zIndex="10" text="Date" textAlign="right" />
+        <Widget xsi:type="widgets.brease.DateTimeOutput" id="dateBackupLast" top="73" left="859" width="310" height="27" zIndex="11" format="HH:MM:ss     dd.MM.yyyy" borderWidth="1px" borderColor="rgba(200, 200, 200, 1)" borderStyle="solid" textAlign="center" padding="5px" />
+        <Widget xsi:type="widgets.brease.Label" id="labBackupLastType" top="113" left="769" width="76" height="22" zIndex="12" text="Type" textAlign="right" />
+        <Widget xsi:type="widgets.brease.DropDownBox" id="ddbBackupLastType" top="103" left="859" width="310" zIndex="13" dataProvider="[{'value':'Manual','text':'Manual'},{'value':'Automatic','text':'Automatic'}]" selectedIndex="1" selectedValue="Automatic" disabledTextColor="rgba(71, 71, 71, 1)" padding="5px" textAlign="center" enable="false" />
       </Widgets>
     </Widget>
-    <Widget xsi:type="widgets.brease.GroupBox" id="grpBackup1" top="235" left="10" width="750" height="285" zIndex="10" text="Update">
+    <Widget xsi:type="widgets.brease.GroupBox" id="grpBackup1" top="410" left="10" width="750" height="260" zIndex="10" text="Update">
       <Widgets>
-        <Widget xsi:type="widgets.brease.Label" id="labBackupName4" top="18" left="409" width="300" zIndex="0" text="Update" textAlign="center" bold="true" />
-        <Widget xsi:type="widgets.brease.Label" id="labBackupInfo" top="93" left="-6" width="76" height="22" zIndex="1" text="ID" textAlign="right" />
-        <Widget xsi:type="widgets.brease.Label" id="labBackupName5" top="18" left="79" width="300" zIndex="2" text="Available" textAlign="center" bold="true" />
-        <Widget xsi:type="widgets.brease.TextOutput" id="txtBackupRequestedID" top="88" left="79" width="300" zIndex="3" borderWidth="1px" borderStyle="solid" />
-        <Widget xsi:type="widgets.brease.TextOutput" id="txtBackupUpdateID" top="88" left="409" width="300" zIndex="4" borderWidth="1px" borderStyle="solid" />
-        <Widget xsi:type="widgets.brease.Label" id="labBackupInfo1" top="128" left="-6" width="76" height="22" zIndex="5" text="Version" textAlign="right" />
-        <Widget xsi:type="widgets.brease.TextOutput" id="txtBackupRequestedVersion" top="123" left="79" width="300" zIndex="6" borderWidth="1px" borderStyle="solid" />
-        <Widget xsi:type="widgets.brease.TextOutput" id="txtBackupUpdateVersion" top="123" left="409" width="300" zIndex="7" borderWidth="1px" borderStyle="solid" />
-        <Widget xsi:type="widgets.brease.Label" id="labBackupInfo2" top="58" left="-6" width="76" height="22" zIndex="8" text="Name" textAlign="right" />
-        <Widget xsi:type="widgets.brease.TextOutput" id="txtBackupRequestedName" top="53" left="79" width="300" zIndex="9" borderWidth="1px" borderStyle="solid" />
-        <Widget xsi:type="widgets.brease.TextOutput" id="txtBackupUpdateName" top="53" left="409" width="300" zIndex="10" borderWidth="1px" borderStyle="solid" />
-        <Widget xsi:type="widgets.brease.Button" id="btnBackupRefresh" top="168" left="74" width="306" height="52" zIndex="11" text="Refresh Information" cornerRadius="10px" />
+        <Widget xsi:type="widgets.brease.Label" id="labBackupName4" top="8" left="409" width="300" zIndex="0" text="Update" textAlign="center" bold="true" />
+        <Widget xsi:type="widgets.brease.Label" id="labBackupInfo" top="78" left="-6" width="76" height="22" zIndex="1" text="ID" textAlign="right" />
+        <Widget xsi:type="widgets.brease.Label" id="labBackupName5" top="8" left="79" width="300" zIndex="2" text="Available" textAlign="center" bold="true" />
+        <Widget xsi:type="widgets.brease.TextOutput" id="txtBackupRequestedID" top="73" left="79" width="300" zIndex="3" borderWidth="1px" borderStyle="solid" />
+        <Widget xsi:type="widgets.brease.TextOutput" id="txtBackupUpdateID" top="73" left="409" width="300" zIndex="4" borderWidth="1px" borderStyle="solid" />
+        <Widget xsi:type="widgets.brease.Label" id="labBackupInfo1" top="113" left="-6" width="76" height="22" zIndex="5" text="Version" textAlign="right" />
+        <Widget xsi:type="widgets.brease.TextOutput" id="txtBackupRequestedVersion" top="108" left="79" width="300" zIndex="6" borderWidth="1px" borderStyle="solid" />
+        <Widget xsi:type="widgets.brease.TextOutput" id="txtBackupUpdateVersion" top="108" left="409" width="300" zIndex="7" borderWidth="1px" borderStyle="solid" />
+        <Widget xsi:type="widgets.brease.Label" id="labBackupInfo2" top="43" left="-6" width="76" height="22" zIndex="8" text="Name" textAlign="right" />
+        <Widget xsi:type="widgets.brease.TextOutput" id="txtBackupRequestedName" top="38" left="79" width="300" zIndex="9" borderWidth="1px" borderStyle="solid" />
+        <Widget xsi:type="widgets.brease.TextOutput" id="txtBackupUpdateName" top="38" left="409" width="300" zIndex="10" borderWidth="1px" borderStyle="solid" />
+        <Widget xsi:type="widgets.brease.Button" id="btnBackupRefresh" top="153" left="74" width="306" height="52" zIndex="11" text="Refresh Information" cornerRadius="10px" />
+        <Widget xsi:type="widgets.brease.ToggleButton" id="btnBackupBusy" top="173" left="454" width="200" height="35" zIndex="12" mouseDownText="Busy" text="Idle" backGroundGradient="linear-gradient(to bottom, #4A4A4A 0%,#29920c 100%)" disabledBackGroundGradient="linear-gradient(to bottom, #4A4A4A 0%,#29920c 100%)" checkedBackGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" disabledCheckedBackGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" enable="false" />
       </Widgets>
     </Widget>
-    <Widget xsi:type="widgets.brease.GroupBox" id="grpBackup2" top="10" left="775" width="405" height="775" zIndex="11" text="Status">
+    <Widget xsi:type="widgets.brease.GroupBox" id="grpBackup2" top="10" left="10" width="1180" height="170" zIndex="11" text="Status">
       <Widgets>
-        <Widget xsi:type="widgets.brease.Label" id="labBackupName7" top="18" left="544" width="131" zIndex="0" text="Update" textAlign="center" bold="true" />
-        <Widget xsi:type="widgets.brease.ToggleButton" id="btnBackupBusy" top="63" left="194" width="200" height="35" zIndex="1" mouseDownText="Busy" text="Idle" backGroundGradient="linear-gradient(to bottom, #4A4A4A 0%,#29920c 100%)" disabledBackGroundGradient="linear-gradient(to bottom, #4A4A4A 0%,#29920c 100%)" checkedBackGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" disabledCheckedBackGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" enable="false" />
-        <Widget xsi:type="widgets.brease.ToggleButton" id="btnBackupError" top="583" left="189" width="200" height="35" zIndex="2" mouseDownText="Error" text="No Error" backGroundGradient="linear-gradient(to bottom, #4A4A4A 0%,#29920c 100%)" disabledBackGroundGradient="linear-gradient(to bottom, #4A4A4A 0%,#29920c 100%)" checkedBackGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" disabledCheckedBackGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" enable="false" />
-        <Widget xsi:type="widgets.brease.Label" id="labBackupName1" top="258" left="104" width="280" zIndex="3" text="Last Backup" textAlign="center" bold="true" />
-        <Widget xsi:type="widgets.brease.Label" id="labBackupLasttName" top="293" left="4" width="76" height="22" zIndex="4" text="Name" textAlign="right" />
-        <Widget xsi:type="widgets.brease.TextOutput" id="txtBackupLastName" top="288" left="104" width="280" zIndex="5" borderWidth="1px" borderStyle="solid" />
-        <Widget xsi:type="widgets.brease.Label" id="labBackupLastDate" top="328" left="4" width="76" height="22" zIndex="6" text="Date" textAlign="right" />
-        <Widget xsi:type="widgets.brease.DateTimeOutput" id="dateBackupLast" top="323" left="104" width="280" height="27" zIndex="7" format="HH:MM:ss     dd.MM.yyyy" borderWidth="1px" borderColor="rgba(200, 200, 200, 1)" borderStyle="solid" textAlign="center" />
-        <Widget xsi:type="widgets.brease.Label" id="labBackupLastType" top="358" left="4" width="76" height="22" zIndex="8" text="Type" textAlign="right" />
-        <Widget xsi:type="widgets.brease.DropDownBox" id="ddbBackupLastType" top="353" left="104" width="280" zIndex="9" dataProvider="[{'value':'Automatic','text':'Automatic'},{'value':'Manual','text':'Manual'}]" selectedValue="Automatic" disabledTextColor="rgba(71, 71, 71, 1)" textAlign="center" enable="false" />
-        <Widget xsi:type="widgets.brease.Label" id="labBackupName3" top="128" left="104" width="280" zIndex="10" text="Project Current" textAlign="center" bold="true" />
-        <Widget xsi:type="widgets.brease.TextOutput" id="txtBackupCurrentName" top="158" left="104" width="280" zIndex="11" borderWidth="1px" borderStyle="solid" />
-        <Widget xsi:type="widgets.brease.TextOutput" id="txtBackupCurrentVersion" top="193" left="104" width="280" zIndex="12" borderWidth="1px" borderStyle="solid" />
-        <Widget xsi:type="widgets.brease.Label" id="labBackupInfo3" top="163" left="4" width="76" height="22" zIndex="13" text="ID" textAlign="right" />
-        <Widget xsi:type="widgets.brease.Label" id="labBackupInfo4" top="198" left="4" width="76" height="22" zIndex="14" text="Version" textAlign="right" />
-        <Widget xsi:type="widgets.brease.ToggleButton" id="btnUSBconnected" top="13" left="194" width="200" height="35" zIndex="15" mouseDownText="USB connected" text="USB disconnected" backGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" disabledBackGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" checkedBackGroundGradient="linear-gradient(to bottom, #4A4A4A 0%,#29920c 100%)" disabledCheckedBackGroundGradient="linear-gradient(to bottom, #4A4A4A 0%,#29920c 100%)" enable="false" />
-        <Widget xsi:type="widgets.brease.Label" id="labBackupInfo5" top="638" left="9" width="171" height="22" zIndex="16" text="Error No" textAlign="right" />
-        <Widget xsi:type="widgets.brease.Button" id="btnBackupReset" top="578" left="9" width="170" height="40" zIndex="17" text="Reset" cornerRadius="10px" />
-        <Widget xsi:type="widgets.brease.NumericOutput" id="numBackupErrorNo" top="633" left="199" width="190" height="27" zIndex="18" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':10},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':10},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':10}}" borderWidth="1px" />
+        <Widget xsi:type="widgets.brease.Label" id="labBackupName3" top="3" left="849" width="310" zIndex="0" text="Current Project" textAlign="center" bold="true" padding="5px" />
+        <Widget xsi:type="widgets.brease.TextOutput" id="txtBackupCurrentName" top="28" left="849" width="310" zIndex="1" borderWidth="1px" borderStyle="solid" textAlign="center" padding="5px" />
+        <Widget xsi:type="widgets.brease.TextOutput" id="txtBackupCurrentVersion" top="63" left="849" width="310" zIndex="2" borderWidth="1px" borderStyle="solid" textAlign="center" padding="5px" />
+        <Widget xsi:type="widgets.brease.Label" id="labBackupInfo3" top="33" left="759" width="76" height="22" zIndex="3" text="ID" textAlign="right" />
+        <Widget xsi:type="widgets.brease.Label" id="labBackupInfo4" top="68" left="759" width="76" height="22" zIndex="4" text="Version" textAlign="right" />
+        <Widget xsi:type="widgets.brease.ToggleButton" id="btnUSBconnected" top="8" left="519" width="200" height="35" zIndex="5" mouseDownText="USB connected" text="USB disconnected" backGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" disabledBackGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" checkedBackGroundGradient="linear-gradient(to bottom, #4A4A4A 0%,#29920c 100%)" disabledCheckedBackGroundGradient="linear-gradient(to bottom, #4A4A4A 0%,#29920c 100%)" enable="false" />
+        <Widget xsi:type="widgets.brease.Label" id="labBackupInfo5" top="48" left="24" width="69" height="22" zIndex="6" text="Error No" textAlign="right" />
+        <Widget xsi:type="widgets.brease.Button" id="btnBackupReset" top="73" left="519" width="196" height="40" zIndex="7" text="Reset" cornerRadius="10px" />
+        <Widget xsi:type="widgets.brease.NumericOutput" id="numBackupErrorNo" top="43" left="99" width="151" height="27" zIndex="8" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':10},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':10},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':10}}" borderWidth="1px" />
+        <Widget xsi:type="widgets.brease.Label" id="labBackupInfo6" top="48" left="274" width="84" height="22" zIndex="9" text="Error State" textAlign="right" />
+        <Widget xsi:type="widgets.brease.NumericOutput" id="numBackupErrorState" top="43" left="369" width="136" height="27" zIndex="10" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':10},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':10},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':10}}" borderWidth="1px" />
+        <Widget xsi:type="widgets.brease.TextOutput" id="txtBackupErrorText" top="78" left="99" width="406" zIndex="11" borderWidth="1px" borderStyle="solid" />
+        <Widget xsi:type="widgets.brease.Label" id="labBackupInfo7" top="83" left="15" width="78" height="22" zIndex="12" text="Error Text" textAlign="right" />
+        <Widget xsi:type="widgets.brease.TextOutput" id="txtBackupStatus" top="8" left="99" width="406" zIndex="13" borderWidth="1px" borderStyle="solid" />
+        <Widget xsi:type="widgets.brease.Label" id="labBackupInfo8" top="13" left="24" width="70" height="22" zIndex="14" text="Status" textAlign="right" />
       </Widgets>
     </Widget>
   </Widgets>

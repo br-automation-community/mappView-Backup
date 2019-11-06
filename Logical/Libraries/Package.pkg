@@ -14,5 +14,6 @@
     <Object Type="Library" Language="Binary" Description="mapp Backup Library">MpBackup</Object>
     <Object Type="Library" Language="Binary" Description="Core library for mapp components">MpBase</Object>
     <Object Type="Library" Language="IEC">IecCheck</Object>
+    <Object Type="Library" Language="binary" Description="The AsBrWStr library allows 8-bit character strings to be implemented for 16-bit WC (AsBrWStr) strings.">AsBrWStr</Object>
   </Objects>
 </Package>

@@ -1,0 +1,6 @@
+VAR CONSTANT
+	BACKUP_DEVICE_LIST : ARRAY[0..4] OF STRING[40] := ['USER_DEVICE','NET_DEVICE','USB_DEVICE',2('')]; (* List of predefined devices *)
+END_VAR
+VAR
+	Backup_01 : bacMAIN;
+END_VAR
