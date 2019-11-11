@@ -8,7 +8,7 @@
 
 ## Introduction
 
-This is a sample project for a software management with mappView. It uses B&R mappBackup to backup and restore the PLC data.
+This is a sample project for a software management with mappView. It uses B&R mappBackup to backup and restore the PLC data. A restore package can also be generated with Automation Studio and then used to update a PLC.
 
 ![](Logical/mappView/Resources/Media/screenshot_main.png)
 
