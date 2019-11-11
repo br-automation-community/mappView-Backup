@@ -6,6 +6,5 @@
     <Object Type="File">Config.mappviewcfg</Object>
     <Object Type="File">Backup.binding</Object>
     <Object Type="File">Backup.eventbinding</Object>
-    <Object Type="File">contentBackup.eventbinding</Object>
   </Objects>
 </Package>

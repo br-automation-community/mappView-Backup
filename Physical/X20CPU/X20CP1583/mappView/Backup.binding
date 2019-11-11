@@ -2,13 +2,170 @@
 <BindingsSet xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Backup_binding">
 	<Bindings>
 		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.DAT.RequestedName" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupRequestedName" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.DAT.RequestedID" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupRequestedID" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.DAT.RequestedVersion" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupRequestedVersion" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:NET.PAR.is_linked" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="btnNETconnected" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.DAT.Status" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupStatus" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.ERR.No" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="numBackupErrorNo" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.ERR.State" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="numBackupErrorState" attribute="value" />
+		</Binding>
+		
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.DAT.CurrentID" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupCurrentName" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.DAT.CurrentVersion" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupCurrentVersion" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.DAT.LastName" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupLastName" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.DAT.LastDate" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="dateBackupLast" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.DAT.LastType" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="ddbBackupLastType" attribute="selectedIndex" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.PAR.DeviceName" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="dddBackupDeviceList" attribute="selectedValue" />
+		</Binding>		
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.VIS.DeviceList" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="dddBackupDeviceList" attribute="dataProvider" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.ERR.Text" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupErrorText" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.VIS.EnableCommand" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="grpBackupDetails" attribute="enable" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.VIS.EnableCommand" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="grpBackup" attribute="enable" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.VIS.BackupNames" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="lstBackupNames" attribute="dataProvider" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.PAR.BackupName" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupName" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.VIS.EnableDelete" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="btnBackupDelete" attribute="enable" />
+		</Binding>	
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:NET.ERR.active" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="btnNETreset" attribute="enable" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:NET.PAR.enable_connect" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="btnNETconnect" attribute="enable" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:NET.PAR.server_name" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtNETserver_name" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:NET.PAR.server_ip" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtNETserver_ip" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:NET.PAR.server_port" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtNETserver_port" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:NET.PAR.server_domain" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtNETserver_domain" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:NET.PAR.server_protocol" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="ddbNETprotocol" attribute="selectedValue" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:NET.PAR.user_name" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtNETuser_name" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:NET.PAR.user_password" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtNETuser_password" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:NET.ERR.no" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="numNETErrorNo" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:NET.ERR.text" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtNETError" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:NET.PAR.state_machine" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="ddbNETstatus" attribute="selectedIndex" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:NET.PAR.server_share" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtNETserver_path" attribute="value" />
+		</Binding>		
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:USB.PAR.refresh_interval" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="numUSBintervall" attribute="value" />
+		</Binding>	
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:USB.PAR.state_machine" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="ddbUSBstatus" attribute="selectedIndex" />
+		</Binding>
+		<Binding mode="oneWay">
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:USB.PAR.is_connected" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="btnUSBconnected" attribute="value" />
 		</Binding>
-	
-<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::mappBackup:SelectedDevice" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="ddbDeviceA" attribute="selectedValue" />
-</Binding>
-</Bindings>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:USB.PAR.ignore_dongle" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="chkUSBdongle" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:USB.ERR.text" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtUSBError" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:USB.ERR.no" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="numUSBErrorNo" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:USB.CMD.auto_scan" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="chkUSBenable" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:USB.ERR.active" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="btnUSBreset" attribute="enable" />
+		</Binding>
+
+	</Bindings>
 </BindingsSet>

@@ -5,3 +5,37 @@ FUNCTION String2DataProvider : BOOL
 		TargetString : UDINT;
 	END_VAR
 END_FUNCTION
+
+FUNCTION WorkingStatus : UDINT
+	VAR_INPUT
+		BACKUP : REFERENCE TO bacMAIN;
+		str : UDINT;
+		animation : UDINT;
+	END_VAR
+	VAR
+		counter : UDINT;
+		tmpStr : STRING[20];
+		tmpWStr : WSTRING[20];
+	END_VAR
+END_FUNCTION
+
+FUNCTION CreateError : bacSTATE
+	VAR_INPUT
+		BACKUP : REFERENCE TO bacMAIN;
+		No : DINT;
+		Text : WSTRING[200];
+		State : bacSTATE;
+	END_VAR
+END_FUNCTION
+
+FUNCTION InsertRecName : BOOL
+	VAR_INPUT
+		BAC : REFERENCE TO bacMAIN;
+		new_name : STRING[BACKUP_NAME_LENGTH];
+	END_VAR
+	VAR
+		idx : DINT;
+		idy : DINT;
+		lSort : DINT;
+	END_VAR
+END_FUNCTION

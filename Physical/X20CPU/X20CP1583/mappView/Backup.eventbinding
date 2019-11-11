@@ -1,7 +1,339 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <EventBindingSet id="Backup_eventbinding" xmlns="http://www.br-automation.com/iat2014/eventbinding/v2" xmlns:types="http://www.br-automation.com/iat2015/widgetTypes/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<Bindings>
+		<!-- //////////////////////////////////////////////// Configuration //////////////////////////////////////////////////////////////////////// />-->
+		
+		<!-- Connect to network share />-->
+		<EventBinding id="contentBackup.btnNETconnect.Click">
+			<Source contentRefId="contentBackup" widgetRefId="btnNETconnect" xsi:type="widgets.brease.Button.Event" event="Click" />
+			<EventHandler>
+				<Action>
+					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:NET.CMD.connect" >
+						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+					</Target>
+				</Action>
+			</EventHandler>
+		</EventBinding>
+		
+		<!-- Reset error or abort command on network share />-->
+		<EventBinding id="contentBackup.btnNETreset.Click">
+			<Source contentRefId="contentBackup" widgetRefId="btnNETreset" xsi:type="widgets.brease.Button.Event" event="Click" />
+			<EventHandler>
+				<Action>
+					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:NET.CMD.error_reset" >
+						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+					</Target>
+				</Action>
+			</EventHandler>
+		</EventBinding>
+		
+		<!-- Reset error for USB port />-->
+		<EventBinding id="contentBackup.btnUSBreset.Click">
+			<Source contentRefId="contentBackup" widgetRefId="btnUSBreset" xsi:type="widgets.brease.Button.Event" event="Click" />
+			<EventHandler>
+				<Action>
+					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:USB.CMD.error_reset" >
+						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+					</Target>
+				</Action>
+			</EventHandler>
+		</EventBinding>
+			
+		<!-- //////////////////////////////////////////////// Backup //////////////////////////////////////////////////////////////////////// />-->
 
+		<!-- Create new backup />-->
+		<EventBinding id="contentBackup.btnBackupStart.Click">
+			<Source contentRefId="contentBackup" widgetRefId="btnBackupStart" xsi:type="widgets.brease.Button.Event" event="Click" />
+			<!-- Read session id />-->
+			<Operand name="slotId" datatype="ANY_INT">
+				<ReadTarget xsi:type="session.VariableAction.Read" refId="::SYSTEM:clientInfo.slotId" >
+					<Method xsi:type="session.VariableAction.GetValue" />
+				</ReadTarget>
+			</Operand>
+			<EventHandler>
+				<Sequence>
+					<!-- Set slot ID />-->
+					<Step order="1">
+						<Action>
+							<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Backup_01.PAR.VisuSlotID" >
+								<Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=slotId" />
+							</Target>
+						</Action>
+					</Step>
+					<!-- Set command />-->
+					<Step order="2">
+						<Action>
+							<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Backup_01.CMD.Backup" >
+								<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+							</Target>
+						</Action>
+					</Step>
+				</Sequence>				
+			</EventHandler>
+		</EventBinding>
+		
+		<!-- Restore previous backup />-->
+		<EventBinding id="contentBackup.btnBackupRestore.Click">
+			<Source contentRefId="contentBackup" widgetRefId="btnBackupRestore" xsi:type="widgets.brease.Button.Event" event="Click" />
+			<!-- Read session id />-->
+			<Operand name="slotId" datatype="ANY_INT">
+				<ReadTarget xsi:type="session.VariableAction.Read" refId="::SYSTEM:clientInfo.slotId" >
+					<Method xsi:type="session.VariableAction.GetValue" />
+				</ReadTarget>
+			</Operand>
+			<EventHandler>
+				<Action>
+					<!-- Show message box before restoring />-->					
+					<Target xsi:type="clientSystem.Action">
+						<Method xsi:type="clientSystem.Action.ShowMessageBox" type="YesNo" message="Restore backup and overwrite existing software?" header="Restore Software" icon="Question"  />
+					</Target>
+					<Result>
+						<ResultHandler condition="result = 1">
+							<Sequence>
+								<!-- Set slot ID />-->
+								<Step order="1">
+									<Action>
+										<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Backup_01.PAR.VisuSlotID" >
+											<Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=slotId" />
+										</Target>
+									</Action>
+								</Step>
+								<!-- Set command />-->
+								<Step order="2">
+									<Action>
+										<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Backup_01.CMD.Restore" >
+											<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+										</Target>
+									</Action>
+								</Step>
+							</Sequence>	
+						</ResultHandler>
+					</Result>						
+				</Action>			
+			</EventHandler>
+		</EventBinding>
+
+		<!-- Delete existing backup />-->
+		<EventBinding id="contentBackup.btnBackupDelete.Click">
+			<Source contentRefId="contentBackup" widgetRefId="btnBackupDelete" xsi:type="widgets.brease.Button.Event" event="Click" />
+			<!-- Read session id />-->
+			<Operand name="slotId" datatype="ANY_INT">
+				<ReadTarget xsi:type="session.VariableAction.Read" refId="::SYSTEM:clientInfo.slotId" >
+					<Method xsi:type="session.VariableAction.GetValue" />
+				</ReadTarget>
+			</Operand>
+			<!-- Read selected backup name />-->
+			<Operand name="lstBackupName" datatype="ANY_STRING">
+				<ReadTarget xsi:type="widgets.brease.ListBox.ReadAction" contentRefId="contentBackup" widgetRefId="lstBackupNames" >
+					<Method xsi:type="widgets.brease.ListBox.Action.GetSelectedValue" />
+				</ReadTarget>
+			</Operand>
+			<EventHandler>
+				<Action>					
+					<!-- Show message box before deleting />-->					
+					<Target xsi:type="clientSystem.Action">
+						<Method xsi:type="clientSystem.Action.ShowMessageBox" type="YesNo" message="Delete selected backup or directory?" header="Backup Delete" icon="Question"  />
+					</Target>
+					<Result>
+						<ResultHandler condition="result = 1">
+							<Sequence>
+								<!-- Set slot ID />-->
+								<Step order="1">
+									<Action>
+										<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Backup_01.PAR.VisuSlotID" >
+											<Method xsi:type="opcUa.NodeAction.SetValueNumber" value="=slotId" />
+										</Target>
+									</Action>
+								</Step>
+								<!-- Set backup name />-->
+								<Step order="2">
+									<Action>
+										<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Backup_01.PAR.BackupName" >
+											<Method xsi:type="opcUa.NodeAction.SetValueString" value="=lstBackupName" />
+										</Target>
+									</Action>
+								</Step>
+								<!-- Set command />-->
+								<Step order="3">
+									<Action>
+										<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Backup_01.CMD.Delete" >
+											<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+										</Target>
+									</Action>
+								</Step>
+							</Sequence>	
+						</ResultHandler>
+					</Result>						
+				</Action>
+			</EventHandler>
+		</EventBinding>
+		
+		<!-- Reset error />-->
+		<EventBinding id="contentBackup.btnBackupAck.Click">
+			<Source contentRefId="contentBackup" widgetRefId="btnBackupAck" xsi:type="widgets.brease.Button.Event" event="Click" />
+			<EventHandler>
+				<!-- Reset command />-->
+				<Action>
+					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Backup_01.CMD.ErrorReset" >
+						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+					</Target>
+				</Action>
+			</EventHandler>
+		</EventBinding>
+		
+		<!-- Refresh backup details />-->
+		<EventBinding id="contentBackup.btnBackupRefreshDetails.Click">
+			<Source contentRefId="contentBackup" widgetRefId="btnBackupRefreshDetails" xsi:type="widgets.brease.Button.Event" event="Click" />
+			<EventHandler>
+				<!-- Reset command />-->
+				<Action>
+					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Backup_01.CMD.RefreshInfo" >
+						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+					</Target>
+				</Action>
+			</EventHandler>
+		</EventBinding>
+		
+		<!-- Refresh backup names />-->
+		<EventBinding id="contentBackup.btnBackupRefreshDir.Click">
+			<Source contentRefId="contentBackup" widgetRefId="btnBackupRefreshDir" xsi:type="widgets.brease.Button.Event" event="Click" />
+			<EventHandler>
+				<!-- Reset command />-->
+				<Action>
+					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Backup_01.CMD.RefreshDirectory" >
+						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+					</Target>
+				</Action>
+			</EventHandler>
+		</EventBinding>
+		
+		<!-- Generate backup name />-->
+		<EventBinding id="contentBackup.btnBackupGenerate.Click">
+			<Source contentRefId="contentBackup" widgetRefId="btnBackupGenerate" xsi:type="widgets.brease.Button.Event" event="Click" />
+			<EventHandler>
+				<!-- Reset command />-->
+				<Action>
+					<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Backup_01.CMD.GenerateName" >
+						<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+					</Target>
+				</Action>
+			</EventHandler>
+		</EventBinding>
+		
+		<!-- Selected backup changed />-->
+		<EventBinding id="contentBackup.lstBackupNames.Click">
+			<Source contentRefId="contentBackup" widgetRefId="lstBackupNames" xsi:type="widgets.brease.ListBox.Event" event="Click" />
+			<!-- Read selected backup name />-->
+			<Operand name="lstBackupName" datatype="ANY_STRING">
+				<ReadTarget xsi:type="widgets.brease.ListBox.ReadAction" contentRefId="contentBackup" widgetRefId="lstBackupNames" >
+					<Method xsi:type="widgets.brease.ListBox.Action.GetSelectedValue" />
+				</ReadTarget>
+			</Operand>
+			<EventHandler condition="lstBackupName &lt;&gt; &quot;&quot;">
+				<Sequence>
+					<!-- Set backup name />-->
+					<Step order="1">
+						<Action>
+							<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Backup_01.PAR.BackupName" >
+								<Method xsi:type="opcUa.NodeAction.SetValueString" value="=lstBackupName" />
+							</Target>
+						</Action>
+					</Step>
+					<!-- Trigger refresh information />-->
+					<Step order="2">
+						<Action>
+							<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Backup_01.CMD.RefreshInfo" >
+								<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+							</Target>
+						</Action>
+					</Step>
+				</Sequence>	
+			</EventHandler>
+		</EventBinding>
+		
+		<!-- //////////////////////////////////////////////// Show message box OK and Error //////////////////////////////////////////////////////////////////////// />-->
+		
+		<!-- Open message error />-->
+		<EventBinding id="contentBackup.ShowMessageBoxError">
+			<Source xsi:type="opcUa.Event" refId="::AsGlobalPV:Backup_01.VIS.ShowMessageBoxError" event="ValueChanged" />
+			<!-- Read session id />-->
+			<Operand name="slotId" datatype="ANY_INT">
+				<ReadTarget xsi:type="session.VariableAction.Read" refId="::SYSTEM:clientInfo.slotId" >
+					<Method xsi:type="session.VariableAction.GetValue" />
+				</ReadTarget>
+			</Operand>
+			<!-- Read value from PLC />-->	
+			<Operand name="slotIdPlc" datatype="ANY_INT">
+				<ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::AsGlobalPV:Backup_01.PAR.VisuSlotID" >
+					<Method xsi:type="opcUa.NodeAction.GetValue" />
+				</ReadTarget>
+			</Operand>
+			<!-- Read value from PLC />-->	
+			<Operand name="MessageBoxText" datatype="ANY_STRING">
+				<ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::AsGlobalPV:Backup_01.ERR.Text" >
+					<Method xsi:type="opcUa.NodeAction.GetValue" />
+				</ReadTarget>
+			</Operand>
+			
+			<EventHandler condition="slotId=slotIdPlc AND newValue" >		
+				<Action>					
+					<Target xsi:type="clientSystem.Action">
+						<Method xsi:type="clientSystem.Action.ShowMessageBox" type="OK" message="=MessageBoxText" header="Error" icon="Error"  />
+					</Target>
+					<Result>
+						<ResultHandler condition="result = 4">
+							<!-- Set command />-->
+							<Action>					
+								<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Backup_01.CMD.ErrorReset" >
+									<Method xsi:type="opcUa.NodeAction.SetValueBool" value="true" />
+								</Target>
+							</Action>
+						</ResultHandler>
+					</Result>
+				</Action>
+			</EventHandler>
+		</EventBinding>
+		
+		<!-- Open message OK />-->
+		<EventBinding id="contentBackup.ShowMessageBoxOK">
+			<Source xsi:type="opcUa.Event" refId="::AsGlobalPV:Backup_01.VIS.ShowMessageBoxOK" event="ValueChanged" />
+			<!-- Read session id />-->
+			<Operand name="slotId" datatype="ANY_INT">
+				<ReadTarget xsi:type="session.VariableAction.Read" refId="::SYSTEM:clientInfo.slotId" >
+					<Method xsi:type="session.VariableAction.GetValue" />
+				</ReadTarget>
+			</Operand>
+			<!-- Read value from PLC />-->	
+			<Operand name="slotIdPlc" datatype="ANY_INT">
+				<ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::AsGlobalPV:Backup_01.PAR.VisuSlotID" >
+					<Method xsi:type="opcUa.NodeAction.GetValue" />
+				</ReadTarget>
+			</Operand>
+			<!-- Read value from PLC />-->	
+			<Operand name="MessageBoxText" datatype="ANY_STRING">
+				<ReadTarget xsi:type="opcUa.NodeAction.Read" refId="::AsGlobalPV:Backup_01.DAT.Status" >
+					<Method xsi:type="opcUa.NodeAction.GetValue" />
+				</ReadTarget>
+			</Operand>
+			
+			<EventHandler condition="slotId=slotIdPlc AND newValue" >		
+				<Action>					
+					<Target xsi:type="clientSystem.Action">
+						<Method xsi:type="clientSystem.Action.ShowMessageBox" type="OK" message="=MessageBoxText" header="Information" icon="Information"  />
+					</Target>
+					<Result>
+						<ResultHandler condition="result = 4">
+							<!-- Set command />-->
+							<Action>					
+								<Target xsi:type="opcUa.NodeAction" refId="::AsGlobalPV:Backup_01.VIS.ShowMessageBoxOK" >
+									<Method xsi:type="opcUa.NodeAction.SetValueBool" value="false" />
+								</Target>
+							</Action>
+						</ResultHandler>
+					</Result>
+				</Action>
+			</EventHandler>
+		</EventBinding>
 		
 	</Bindings>
 </EventBindingSet>

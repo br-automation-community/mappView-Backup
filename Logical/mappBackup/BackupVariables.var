@@ -1,0 +1,10 @@
+VAR CONSTANT
+	BACKUP_DEVICE_LIST : ARRAY[0..4] OF STRING[40] := ['USB_DEVICE','NET_DEVICE',3('')]; (*List of predefined devices *)
+	BACKUP_LIST_NUM : UINT := 20; (*Maximum number of backups*)
+	BACKUP_NAME_LENGTH : UINT := 100; (*Maximum length for a backup name*)
+	BACKUP_VIS_LENGTH : UINT := 300; (*Make this BACKUP_NAME_LENGTH  x3*)
+END_VAR
+VAR
+	BACKUP_DIRECTORY : STRING[200]; (*Directory for backups*)
+	Backup_01 : bacMAIN; (*Backup management main structure*)
+END_VAR

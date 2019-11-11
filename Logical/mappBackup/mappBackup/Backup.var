@@ -1,10 +1,48 @@
-(*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
-(*Local functions*)
+(*------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+(*Local constants*)
+VAR CONSTANT
+	OK : USINT := 0; (*Constant for status OK *)
+END_VAR
 VAR
-	MpBackupCore_0 : MpBackupCore;
+	DELAY_STARTUP : UINT := 1000; (*Delay startup to give USB and network connections time to start up*)
 END_VAR
 (*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
 (*Local variables*)
 VAR
-	SelectedDevice : STRING[80];
+	bac_state : bacSTATE := BAC_STARTUP; (*Main step index *)
+	first_boot : BOOL := TRUE; (*Flag for first boot up, run some special code*)
+	animation : UDINT := 0; (*Animation for working status	*)
+	tmpWStr1 : WSTRING[200]; (*Temporary unicode string variable *)
+	tmpWStr2 : WSTRING[200]; (*Temporary unicode string variable *)
+	tmpStr1 : STRING[100]; (*Temporary string variable *)
+	BackupName : STRING[BACKUP_NAME_LENGTH]; (*Local backup name*)
+	DeviceNameOld : STRING[100]; (*Local device name*)
+	DeviceName : STRING[100]; (*Local device name*)
+	DeviceIdx : USINT;
+	idx : UINT; (*Counter variable*)
+	rtc_gettime : RTCtime_typ; (*Time and date*)
+	lDirReadData : fiDIR_READ_EX_DATA; (*File and directory information*)
+	has_oversized_items : BOOL; (*Flag for oversized backup names*)
+	found_restore_dir : BOOL; (*Flag for directory for the restpre process*)
+END_VAR
+(*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+(*Local functions*)
+VAR
+	MpBackupCore_0 : MpBackupCore; (*mappBackup function block*)
+	DInfo : DirInfo; (*Directory information*)
+	DOpen : DirOpen; (*Start reading directories*)
+	DRead : DirReadEx; (*Read directories*)
+	DClose : DirClose; (*Finish reading directories*)
+	DDelete : DirDeleteEx; (*Delete directory*)
+	DCreate : DirCreate; (*Finish reading directories*)
+	StartupDelay : TON_10ms; (*Delay startup timer*)
+END_VAR
+(*----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------*)
+(*Local errors*)
+VAR
+	ERR_BAC_NAME_IS_EMPTY : DINT := 50000; (*Backup name is empty*)
+	ERR_BAC_DEVICE_IS_EMPTY : DINT := 50001; (*Device name is empty*)
+	ERR_BAC_MAX_NUM : DINT := 50010; (*Maximum number of backup names reached*)
+	ERR_BAC_NAME_LENGTH : DINT := 50011; (*Backup name length exceeds maximum size*)
+	ERR_BAC_NAME_EXISTS : DINT := 50020; (*Backup name already exists*)
 END_VAR
