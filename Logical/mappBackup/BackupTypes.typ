@@ -71,6 +71,7 @@ TYPE
 		EnableDelete : BOOL;
 		ShowMessageBoxOK : BOOL;
 		ShowMessageBoxError : BOOL;
+		SelectedBackup : STRING[BACKUP_VIS_LENGTH];
 	END_STRUCT;
 	bacERR : 	STRUCT  (*Backup managment error structure*)
 		Text : WSTRING[200]; (* Error text *)

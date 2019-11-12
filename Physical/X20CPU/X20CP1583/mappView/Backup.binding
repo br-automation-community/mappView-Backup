@@ -167,5 +167,9 @@
 			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="btnUSBreset" attribute="enable" />
 		</Binding>
 
-	</Bindings>
+	<Binding mode="twoWay">
+<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.VIS.SelectedBackup" attribute="value" />
+<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="lstBackupNames" attribute="selectedValue" />
+</Binding>
+</Bindings>
 </BindingsSet>

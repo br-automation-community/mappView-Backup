@@ -459,7 +459,14 @@ PROGRAM _CYCLIC
 			ELSE
 				// Get information from first entry
 				IF(Backup_01.DAT.BackupNum > 0) THEN
-					BackupName := Backup_01.DAT.BackupNames[0];
+					// Select new backup
+					IF(Backup_01.CMD.Backup) THEN
+						Backup_01.VIS.SelectedBackup := BackupName;
+					// Select first entry
+					ELSE
+						BackupName := Backup_01.DAT.BackupNames[0];
+					END_IF
+					// Get information for selected backup
 					Backup_01.CMD.RefreshInfo := TRUE;
 					bac_state := BAC_CORE;
 				ELSE
