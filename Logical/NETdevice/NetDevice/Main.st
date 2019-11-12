@@ -5,6 +5,19 @@ PROGRAM _INIT
 END_PROGRAM
 
 PROGRAM _CYCLIC
+	// Try to ping network share if not connected
+	IF((NET.PAR.server_ip <> '' OR NET.PAR.server_name <> '') AND NOT NET.PAR.is_linked) THEN
+		IF(NET.PAR.server_ip <> '') THEN
+			IcmpPing_0(enable := 1, pHost := ADR(NET.PAR.server_ip), timeout := 50);
+		ELSE
+			IcmpPing_0(enable := 1, pHost := ADR(NET.PAR.server_name), timeout := 50);
+		END_IF
+		IF(IcmpPing_0.status = ERR_OK) THEN
+			NET.PAR.can_ping := TRUE;
+		ELSIF(IcmpPing_0.status <> ERR_FUB_BUSY) THEN
+			NET.PAR.can_ping := FALSE;
+		END_IF
+	END_IF
 
 	CASE NET.PAR.state_machine OF
 		// -----------------------------------------------------------------------------------------------------------
@@ -39,6 +52,7 @@ PROGRAM _CYCLIC
 				ELSE
 					NET.CMD.error_reset := FALSE;
 				END_IF
+				brsmemset(ADR(NET.ERR), 0, SIZEOF(NET.ERR));
 			END_IF
 		// -----------------------------------------------------------------------------------------------------------
 		// Link device
@@ -167,7 +181,7 @@ PROGRAM _CYCLIC
 				NET.CMD.error_reset := FALSE;
 				NET.ERR.active := FALSE;
 				NET.ERR.no := 0;
-				brsmemset(ADR(NET.ERR.text), 0, SIZEOF(NET.ERR.text));
+				brsmemset(ADR(NET.ERR), 0, SIZEOF(NET.ERR));
 				NET.PAR.state_machine := NET_WAIT;
 			END_IF
 	END_CASE;

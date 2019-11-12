@@ -54,9 +54,9 @@
         <Widget xsi:type="widgets.brease.ToggleButton" id="btnNETconnected" top="43" left="559" width="200" zIndex="15" mouseDownText="Network connected" text="Network disconnected" cornerRadius="10px" backGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" disabledBackGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" checkedBackGroundGradient="linear-gradient(to bottom, #4A4A4A 0%,#29920c 100%)" disabledCheckedBackGroundGradient="linear-gradient(to bottom, #4A4A4A 0%,#29920c 100%)" enable="false" />
       </Widgets>
     </Widget>
-    <Widget xsi:type="widgets.brease.FlyOut" id="flyConfiguration" top="0" left="600" width="600" height="700" zIndex="12" autoClose="true" buttonOffset="330" docking="bottom" multiLine="true" text="USB and Network Configuration" wordWrap="true" buttonHeight="70" buttonWidth="250" buttonCornerRadius="10px" fontSize="16px" bold="false">
+    <Widget xsi:type="widgets.brease.FlyOut" id="flyConfiguration" top="0" left="500" width="700" height="700" zIndex="12" autoClose="true" buttonOffset="430" docking="bottom" multiLine="true" text="USB and Network Configuration" wordWrap="true" buttonHeight="70" buttonWidth="250" buttonCornerRadius="10px" fontSize="16px" bold="false">
       <Widgets>
-        <Widget xsi:type="widgets.brease.GroupBox" id="grpNETdevice" top="5" left="5" width="585" height="440" zIndex="0" text="Network device">
+        <Widget xsi:type="widgets.brease.GroupBox" id="grpNETdevice" top="5" left="5" width="685" height="440" zIndex="0" text="Network device">
           <Widgets>
             <Widget xsi:type="widgets.brease.Label" id="labNETname" top="13" left="10" width="115" zIndex="0" text="Server Name" textAlign="right" />
             <Widget xsi:type="widgets.brease.TextInput" id="txtNETserver_name" top="13" left="134" width="250" zIndex="1" />
@@ -77,9 +77,9 @@
             <Widget xsi:type="widgets.brease.Label" id="labNETtext3" top="83" left="414" width="156" zIndex="16" text="use default if empty" textAlign="left" />
             <Widget xsi:type="widgets.brease.Label" id="labNETtext4" top="118" left="414" width="131" zIndex="17" text="optional" textAlign="left" />
             <Widget xsi:type="widgets.brease.Label" id="labNETErrorText" top="298" left="49" width="76" zIndex="18" text="Error Text" textAlign="right" />
-            <Widget xsi:type="widgets.brease.TextOutput" id="txtNETError" top="298" left="134" width="431" height="27" zIndex="19" borderWidth="1px" cornerRadius="5px" borderStyle="solid" padding="0px 5px 0px 5px" />
-            <Widget xsi:type="widgets.brease.Button" id="btnNETconnect" top="238" left="414" width="140" height="40" zIndex="20" text="Connect" cornerRadius="10px" />
-            <Widget xsi:type="widgets.brease.Button" id="btnNETreset" top="348" left="419" width="140" height="40" zIndex="21" text="Reset / Abort" cornerRadius="10px" backGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" />
+            <Widget xsi:type="widgets.brease.TextOutput" id="txtNETError" top="298" left="134" width="531" height="27" zIndex="19" borderWidth="1px" cornerRadius="5px" borderStyle="solid" padding="0px 5px 0px 5px" />
+            <Widget xsi:type="widgets.brease.Button" id="btnNETconnect" top="243" left="414" width="201" height="40" zIndex="20" text="Connect" cornerRadius="10px" />
+            <Widget xsi:type="widgets.brease.Button" id="btnNETreset" top="348" left="529" width="140" height="40" zIndex="21" text="Reset / Abort" cornerRadius="10px" backGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" />
             <Widget xsi:type="widgets.brease.Label" id="labNETErrorNo" top="328" left="49" width="76" zIndex="22" text="Error No" textAlign="right" />
             <Widget xsi:type="widgets.brease.NumericOutput" id="numNETErrorNo" top="328" left="134" width="131" height="27" zIndex="23" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" borderWidth="1px" cornerRadius="5px" padding="0px 5px 0px 5px" />
             <Widget xsi:type="widgets.brease.DropDownBox" id="ddbNETstatus" top="358" left="129" width="136" zIndex="24" dataProvider="[{'value':'0','text':'Waiting'},{'value':'1','text':'Connecting'},{'value':'2','text':'Disconnecting'},{'value':'3','text':'Error'}]" selectedValue="0" disabledBackColor="rgba(219, 219, 219, 1)" disabledBackGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#C6C6C6 100%)" disabledTextColor="rgba(64, 64, 64, 1)" enable="false" />
@@ -87,9 +87,10 @@
             <Widget xsi:type="widgets.brease.Label" id="labNETpath" top="153" left="10" width="115" zIndex="26" text="Server Path" textAlign="right" />
             <Widget xsi:type="widgets.brease.TextInput" id="txtNETserver_path" top="153" left="134" width="250" zIndex="27" />
             <Widget xsi:type="widgets.brease.Label" id="labNETtext5" top="153" left="414" width="131" zIndex="28" text="optional" textAlign="left" />
+            <Widget xsi:type="widgets.brease.ToggleButton" id="btnNETping" top="193" left="414" width="200" height="40" zIndex="29" mouseDownText="Ping OK" text="Ping not OK" cornerRadius="10px" backGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" disabledBackGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" checkedBackGroundGradient="linear-gradient(to bottom, #4A4A4A 0%,#29920c 100%)" disabledCheckedBackGroundGradient="linear-gradient(to bottom, #4A4A4A 0%,#29920c 100%)" enable="false" />
           </Widgets>
         </Widget>
-        <Widget xsi:type="widgets.brease.GroupBox" id="grpUSB" top="450" left="5" width="585" height="250" zIndex="1" text="USB configuration">
+        <Widget xsi:type="widgets.brease.GroupBox" id="grpUSB" top="450" left="5" width="685" height="250" zIndex="1" text="USB configuration">
           <Widgets>
             <Widget xsi:type="widgets.brease.CheckBox" id="chkUSBenable" top="3" left="-1" width="236" zIndex="0" imageAlign="right" text="Enable USB auto detect" textAlign="right" />
             <Widget xsi:type="widgets.brease.Label" id="labUSBintervall" top="68" left="19" width="186" zIndex="1" text="Polling interval" textAlign="right" />
@@ -97,8 +98,8 @@
             <Widget xsi:type="widgets.brease.CheckBox" id="chkUSBdongle" top="33" left="-1" width="236" zIndex="3" imageAlign="right" text="Ignore license dongle" textAlign="right" />
             <Widget xsi:type="widgets.brease.Label" id="labUSBunit" top="68" left="319" width="91" zIndex="4" text="* 10ms" textAlign="left" />
             <Widget xsi:type="widgets.brease.Label" id="labUSBErrorText" top="113" left="38" width="76" zIndex="5" text="Error Text" textAlign="right" />
-            <Widget xsi:type="widgets.brease.TextOutput" id="txtUSBError" top="113" left="123" width="431" height="27" zIndex="6" borderWidth="1px" cornerRadius="5px" borderStyle="solid" padding="0px 5px 0px 5px" />
-            <Widget xsi:type="widgets.brease.Button" id="btnUSBreset" top="163" left="408" width="140" height="40" zIndex="7" text="Reset / Abort" cornerRadius="10px" backGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" />
+            <Widget xsi:type="widgets.brease.TextOutput" id="txtUSBError" top="113" left="123" width="542" height="27" zIndex="6" borderWidth="1px" cornerRadius="5px" borderStyle="solid" padding="0px 5px 0px 5px" />
+            <Widget xsi:type="widgets.brease.Button" id="btnUSBreset" top="163" left="529" width="140" height="40" zIndex="7" text="Reset / Abort" cornerRadius="10px" backGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#f60909 100%)" />
             <Widget xsi:type="widgets.brease.Label" id="labUSBErrorNo" top="143" left="38" width="76" zIndex="8" text="Error No" textAlign="right" />
             <Widget xsi:type="widgets.brease.NumericOutput" id="numUSBErrorNo" top="143" left="123" width="131" height="27" zIndex="9" format="{'metric':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial':{'decimalPlaces':0,'minimumIntegerDigits':1},'imperial-us':{'decimalPlaces':0,'minimumIntegerDigits':1}}" borderWidth="1px" cornerRadius="5px" padding="0px 5px 0px 5px" />
             <Widget xsi:type="widgets.brease.DropDownBox" id="ddbUSBstatus" top="173" left="118" width="136" zIndex="10" dataProvider="[{'value':'0','text':'IDLE'},{'value':'1','text':'Getting device list'},{'value':'2','text':'Getting device data'},{'value':'3','text':'Check device data'},{'value':'4','text':'Linking device'},{'value':'5','text':'Unlinking device'},{'value':'6','text':'Error'}]" selectedValue="0" disabledBackColor="rgba(219, 219, 219, 1)" disabledBackGroundGradient="linear-gradient(to bottom,#F7F7F7 0%,#C6C6C6 100%)" disabledTextColor="rgba(64, 64, 64, 1)" enable="false" />

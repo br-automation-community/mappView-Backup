@@ -1,2 +1,6 @@
+Version 0.2
+- Added ping support for network share
+- Fixed error message after network backup
+
 Version 0.1
 - First public release

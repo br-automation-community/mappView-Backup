@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <BindingsSet xmlns="http://www.br-automation.com/iat2015/binding/engineering/v2" xmlns:be="http://www.br-automation.com/iat2015/bindingListEmbedded/engineering/v2" xmlns:bt="http://www.br-automation.com/iat2015/bindingListTypes/engineering/v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="Backup_binding">
 	<Bindings>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.VIS.SelectedBackup" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="lstBackupNames" attribute="selectedValue" />
+		</Binding>
 		<Binding mode="oneWay">
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.DAT.RequestedName" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupRequestedName" attribute="value" />
@@ -14,10 +18,6 @@
 			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupRequestedVersion" attribute="value" />
 		</Binding>
 		<Binding mode="oneWay">
-			<Source xsi:type="opcUa" refId="::AsGlobalPV:NET.PAR.is_linked" attribute="value" />
-			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="btnNETconnected" attribute="value" />
-		</Binding>
-		<Binding mode="oneWay">
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.DAT.Status" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupStatus" attribute="value" />
 		</Binding>
@@ -28,8 +28,7 @@
 		<Binding mode="oneWay">
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.ERR.State" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="numBackupErrorState" attribute="value" />
-		</Binding>
-		
+		</Binding>	
 		<Binding mode="oneWay">
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.DAT.CurrentID" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtBackupCurrentName" attribute="value" />
@@ -83,6 +82,10 @@
 			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="btnBackupDelete" attribute="enable" />
 		</Binding>	
 		<Binding mode="oneWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:NET.PAR.is_linked" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="btnNETconnected" attribute="value" />
+		</Binding>
+		<Binding mode="oneWay">
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:NET.ERR.active" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="btnNETreset" attribute="enable" />
 		</Binding>
@@ -97,6 +100,10 @@
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:NET.PAR.server_ip" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="txtNETserver_ip" attribute="value" />
+		</Binding>
+		<Binding mode="twoWay">
+			<Source xsi:type="opcUa" refId="::AsGlobalPV:NET.PAR.can_ping" attribute="value" />
+			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="btnNETping" attribute="value" />
 		</Binding>
 		<Binding mode="twoWay">
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:NET.PAR.server_port" attribute="value" />
@@ -166,10 +173,5 @@
 			<Source xsi:type="opcUa" refId="::AsGlobalPV:USB.ERR.active" attribute="value" />
 			<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="btnUSBreset" attribute="enable" />
 		</Binding>
-
-	<Binding mode="twoWay">
-<Source xsi:type="opcUa" refId="::AsGlobalPV:Backup_01.VIS.SelectedBackup" attribute="value" />
-<Target xsi:type="brease" contentRefId="contentBackup" widgetRefId="lstBackupNames" attribute="selectedValue" />
-</Binding>
-</Bindings>
+	</Bindings>
 </BindingsSet>
